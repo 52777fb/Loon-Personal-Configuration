@@ -1,0 +1,169 @@
+# Loon 配置文件
+# 主页：https://github.com/52777fb
+
+#【图标（手动复制）】
+#1. 作者：KeLee（可莉）
+#    https://raw.githubusercontent.com/luestr/IconResource/refs/heads/main/KeLee_icon.json
+#2. 作者：QureColor
+#    https://raw.githubusercontent.com/Koolson/Qure/master/Other/QureColor-All.json
+#3. 作者：Orz-3
+#    https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/miniColor.json
+#    https://raw.githubusercontent.com/Orz-3/mini/refs/heads/master/Color%2B.json
+
+#【插件（去广告）】
+#1. Loon 插件仓库
+#🌐  https://loon-plugin.vercel.app/
+#2. 可莉的Loon资源库：
+#🌐  https://github.com/luestr/ProxyResource
+#3. 奶思fmz200-插件大合集：
+#🌐https://github.com/fmz200/wool_scripts/raw/main/Loon/plugin/blockAds.plugin
+
+#【规则（分流）】
+#1. 可莉的资源库：
+#🌐   https://github.com/luestr/ShuntRules
+#2. blackmatrix7资源库：
+#🌐 https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Loon
+
+[General]
+# IP查询模式
+ip-mode = dual
+# TUN IPv6配置
+ipv6-vif = auto
+# DNS server
+dns-server = system,223.5.5.5,223.6.6.6,119.29.29.29
+# DoH server
+doh-server = https://dns.alidns.com/dns-query,https://doh.pub/dns-query
+# DoH3 server
+doh3-server = h3://dns.alidns.com/dns-query
+# DoQ server
+doq-server = quic://dns.alidns.com:853
+# wifi共享开启时http服务的端口
+wifi-access-http-port = 6154
+# wifi共享开启时socks5服务的端口
+wifi-access-socks5-port = 6153
+# 是否允许wifi下共享网络
+allow-wifi-access = false
+# 节点测速时的超时秒数
+test-timeout = 3
+# 网络接口
+interface-mode = auto
+# 域名拦截行为
+domain-reject-mode = DNS
+# DNS拦截方式
+dns-reject-mode = LoopbackIP
+# SNI辅助规则匹配
+sni-sniffing = true
+# 直连时丢弃STUN
+disable-stun = true
+# UDP回落策略
+udp-fallback-mode = REJECT
+# 策略切换时关闭连接
+disconnect-on-policy-change = false
+# 直连测试url
+internet-test-url = http://connectivitycheck.platform.hicloud.com/generate_204
+# 节点测试url
+# proxy-test-url = http://www.apple.com/library/test/success.html
+proxy-test-url = http://www.google.com/blank.html
+# 资源解析器
+resource-parser = https://github.com/sub-store-org/Sub-Store/releases/latest/download/sub-store-parser.loon.min.js
+# GeoIP数据库
+geoip-url = https://geodata.kelee.one/Country-Masaiki.mmdb
+# ASN数据库
+ipasn-url = https://geodata.kelee.one/GeoLite2-ASN-P3TERX.mmdb
+# 绕过代理
+skip-proxy = 192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,localhost,*.local,e.crashlynatics.com
+# 绕过路由
+bypass-tun = 10.0.0.0/8,100.64.0.0/10,127.0.0.0/8,169.254.0.0/16,172.16.0.0/12,192.0.0.0/24,192.0.2.0/24,192.88.99.0/24,192.168.0.0/16,198.51.100.0/24,203.0.113.0/24,224.0.0.0/4,255.255.255.255/32
+
+[Proxy]
+
+
+[Remote Proxy]
+
+
+
+[Remote Filter]
+
+
+[Proxy Group]
+Global = url-test,Sub-ALL,interval = 600,tolerance = 100,img-url = https://raw.githubusercontent.com/Orz-3/mini/master/Color/Global.png
+Hong Kong = url-test,Sub-HK,interval = 600,tolerance = 100,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
+Taiwan = url-test,Sub-TW,interval = 600,tolerance = 100,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Taiwan.png
+Japan = url-test,Sub-JP,interval = 600,tolerance = 100,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
+Singapore = url-test,Sub-SG,interval = 600,tolerance = 100,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
+United States = url-test,Sub-US,interval = 600,tolerance = 100,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
+Rare Areas = url-test,Sub-RA,interval = 600,tolerance = 100,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Malaysia.png
+
+[Proxy Chain]
+
+
+[Rule]
+FINAL,DIRECT
+
+
+[Remote Rule]
+https://rule.kelee.one/Loon/Advertising.lsr, policy=REJECT, tag=Advertising, enabled=true
+https://rule.kelee.one/Loon/Apple.lsr, policy=DIRECT, tag=Apple, enabled=true
+https://rule.kelee.one/Loon/Microsoft.lsr, policy=DIRECT, tag=Microsoft, enabled=true
+https://rule.kelee.one/Loon/Google.lsr, policy=Hong Kong, tag=Google, enabled=true
+https://rule.kelee.one/Loon/Telegram.lsr, policy=Hong Kong, tag=Telegram, enabled=true
+https://rule.kelee.one/Loon/Twitter.lsr, policy=Hong Kong, tag=X, enabled=true
+https://rule.kelee.one/Loon/YouTube.lsr, policy=Hong Kong, tag=YouTube, enabled=true
+https://rule.kelee.one/Loon/TikTok.lsr, policy=United States, tag=TikTok, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Shadowrocket/OpenAI/OpenAI.list, policy=United States, tag=ChatGPT, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/Claude/Claude.list, policy=United States, tag=Claude, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/Gemini/Gemini.list, policy=United States, tag=Gmini, enabled=true
+https://rule.kelee.one/Loon/GitHub.lsr, policy=Hong Kong, tag=GitHub, enabled=true
+https://rule.kelee.one/Loon/Spotify.lsr, policy=Hong Kong, tag=Spotify, enabled=true
+https://rule.kelee.one/Loon/Instagram.lsr, policy=Hong Kong, tag=Instagram, enabled=true
+https://rule.kelee.one/Loon/OKX.lsr, policy=Hong Kong, tag=OKX, enabled=true
+https://rule.kelee.one/Loon/Netflix.lsr, policy=Hong Kong, tag=Netflix, enabled=true
+https://rule.kelee.one/Loon/Anthropic.lsr, policy=United States, tag=Anthropic, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/Steam/Steam.list, policy=Hong Kong, tag=Steam, enabled=true
+https://raw.githubusercontent.com/52777fb/Bybit-Super-Rule-for-Loon/refs/heads/main/bybit.list, policy=Taiwan, tag=Bybit, enabled=true
+https://rule.kelee.one/Loon/PikPak.lsr, policy=Singapore, tag=PikPak, enabled=true
+https://rule.kelee.one/Loon/Lan.lsr, policy=DIRECT, tag=Lan, enabled=true
+https://rule.kelee.one/Loon/ChinaMax.lsr, policy=DIRECT, tag=ChinaMax, enabled=true
+https://rule.kelee.one/Loon/Global.lsr, policy=Hong Kong, tag=Global, enabled=true
+
+[Host]
+
+
+[Rewrite]
+
+
+[Script]
+
+
+[Remote Script]
+
+
+[Plugin]
+https://kelee.one/Tool/Loon/Lpx/BlockAdvertisers.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/Block_HTTPDNS.lpx, enabled=true
+https://github.com/NSRingo/LocationService/releases/latest/download/iRingo.LocationService.plugin, enabled=true
+https://github.com/NSRingo/Siri/releases/latest/download/iRingo.Search.plugin, enabled=true
+https://github.com/NSRingo/Siri/releases/latest/download/iRingo.Siri.plugin, enabled=true
+https://github.com/NSRingo/WeatherKit/releases/latest/download/iRingo.WeatherKit.plugin, enabled=true
+https://github.com/NSRingo/GeoServices/releases/latest/download/iRingo.Maps.plugin, enabled=true
+https://raw.githubusercontent.com/BOBOLAOSHIV587/Rules/refs/heads/main/Loon/Premium/Premium.plugin, enabled=true
+https://kelee.one/Tool/Loon/Lpx/YouTube_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/BaiduNetDisk_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/MailMaster_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/Bilibili_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/XunLei_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/VideoGo_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/Amap_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/AliYunDrive_remove_ads.lpx, enabled=false
+https://kelee.one/Tool/Loon/Lpx/123NetWorkDisk_remove_ads.lpx, enabled=true
+https://kelee.one/Tool/Loon/Lpx/12306_remove_ads.lpx, enabled=true
+
+[MitM]
+
+ca-passphrase = 
+ca-p12 = 
+ca-passphrase = 
+hostname =
+ca-p12 =
+ca-passphrase =
+skip-server-cert-verify = false
